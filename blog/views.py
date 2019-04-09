@@ -10,3 +10,15 @@ class PostDetailView(DetailView):
 
 class PostListView(ListView):
     model = models.Post
+
+
+class PostCreateView(CreateView):
+    model = models.Post
+
+
+class PostUpdateView(UpdateView):
+    model = models.Post
+
+
+class PostDeleteView(DeleteView):
+    model = models.Post
