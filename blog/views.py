@@ -8,8 +8,6 @@ from blog import models, forms
 from django.utils import timezone
 
 # Create your views here.
-class LoginView(TemplateView):
-    template_name = 'about.html'
 
 class AboutView(TemplateView):
     template_name = 'about.html'

@@ -5,7 +5,6 @@ app_name = 'blog'
 
 urlpatterns = [
     path('', views.PostListView.as_view(), name='post_list'),
-    path('login/', views.LoginView.as_view(), name='login'),
     path('about/', views.AboutView.as_view(), name='about'),
     re_path(r'^post/(?P<pk>\d+)/$', views.PostDetailView.as_view(), name='post_detail'),
     path('post/new/', views.PostCreateView.as_view(), name='post_create'),
