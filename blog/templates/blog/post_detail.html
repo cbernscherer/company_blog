@@ -2,9 +2,9 @@
 
 {% block content %}
   <h1 class="posttitle loader">{{ post.title }}</h1>
-  {% if post.published_date %}
+  {% if post.published %}
     <div class="postdate">
-      Published: {{ post.published_date|date:'D M Y' }}
+      Published: {{ post.published|date:'d. M. Y' }}
     </div>
 
   {% else %}

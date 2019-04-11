@@ -6,7 +6,7 @@
       <div class="post">
         <h1><a href="{% url 'blog:post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
         <div class="date">
-          <p>Published on: {{ post.published|date:"D M Y" }}</p>
+          <p>Published on: {{ post.published|date:"d. M. Y" }}</p>
           <a href="{% url 'blog:post_detail' pk=post.pk %}">Comments: {{ post.approve_comments.count }}</a>
         </div>
       </div>

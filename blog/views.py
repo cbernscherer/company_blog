@@ -52,6 +52,7 @@ class DraftListView(LoginRequiredMixin, ListView):
     redirect_field_name = '/'
 
     model = models.Post
+    template_name = 'blog/post_draft_list.html'
 
     def get_queryset(self):
         return models.Post.objects.filter(published__isnull=True).order_by('create_date')
@@ -62,7 +63,7 @@ class DraftListView(LoginRequiredMixin, ListView):
 def publish_post(request, pk):
     post = get_object_or_404(models.Post, pk=pk)
     post.publish()
-    return redirect(reverse('blog:post_detail'), pk=pk)
+    return redirect(reverse('blog:post_detail', kwargs={'pk':pk}))
 
 
 @login_required
@@ -77,7 +78,7 @@ def add_comment_to_post(request, pk):
             comment.post = post
             comment.save()
 
-            return redirect(reverse('blog:post_detail'), pk=post.pk)
+            return redirect(reverse('blog:post_detail', kwargs={'pk':post.pk}))
 
     else:
         form = forms.CommentForm()
@@ -90,7 +91,7 @@ def comment_approve(request, pk):
     comment = get_object_or_404(models.Comment,pk=pk)
 
     comment.approve()
-    return redirect(reverse('blog:post_detail'), pk=comment.post.pk)
+    return redirect(reverse('blog:post_detail', kwargs={'pk':comment.post.pk}))
 
 
 @login_required
@@ -99,4 +100,4 @@ def comment_remove(request, pk):
 
     post_pk = comment.post.pk
     comment.delete()
-    return redirect(reverse('blog:post_detail'), pk=post_pk)
+    return redirect(reverse('blog:post_detail', kwargs={'pk':post_pk}))
