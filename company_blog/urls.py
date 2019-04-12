@@ -19,7 +19,7 @@ from django.contrib.auth.views import LogoutView,LoginView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('account/login/', LoginView.as_view(redirect_authenticated_user=True), name='login'),
-    path('account/logout/', LogoutView.as_view(next_page='/'), name='logout'),
+    re_path(r'^accounts/login/', LoginView.as_view(redirect_authenticated_user=True), name='login'),
+    re_path(r'^accounts/logout/', LogoutView.as_view(next_page='/'), name='logout'),
     re_path(r'^', include('blog.urls')),
 ]

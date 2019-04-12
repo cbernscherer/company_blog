@@ -24,7 +24,7 @@
     {% for comment in post.comments.all %}
       {% if user.is_authenticated or comment.approved_comment %}
         <br>
-        Created: {{ comment.create_date|date:'D M Y' }}
+        Created: {{ comment.create_date|date:'d. M. Y' }}
         {% if not comment.approved_comment %}
           <a class="btn btn-primary" href="{% url 'blog:comment_approve' pk=comment.pk %}">Approve Comment</a>
           <a class="btn btn-danger" href="{% url 'blog:comment_remove' pk=comment.pk %}">Delete Comment</a>
